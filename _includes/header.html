@@ -29,5 +29,147 @@
     <meta property="og:description" content="{{ meta_description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6&flags=gated"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.4/paper-full.js"></script>
+    <!-- <script type="text/paperscript" src="/assets/heroAnim.js" canvas="mycanvas"></script> -->
+    <script type="text/paperscript" canvas="myCanvas">
+              
+          var topLeft = view.center - [80, 40];
+          var bottomRight = view.center + [120, 120];
+      
+          var width, height, center;
+          var points = 12;
+          var smooth = true;
+          var path = new Path({
+            topLeft: topLeft,
+            bottomRight: bottomRight,
+            // Fill the path with a gradient of three color stops
+            // that runs between the two points we defined earlier:
+            fillColor: {
+                gradient: {
+                    // stops: ['yellow', 'red', 'blue']
+                    stops: ['rgba(255, 75, 31, .03)', 'rgba(255, 75, 31, .63)', 'rgba(31, 221, 255, .31)'],
+                },
+                origin: topLeft,
+                destination: bottomRight
+            }
+        });
+          var mousePos = view.center / 2;
+          var pathHeight = mousePos.y;
+
+          
+          var ce = view.center
+          var topsegments = [new Point(ce.x-view.size.width/2, ce.y-view.size.height/2), new Point(ce.x+view.size.width/2, ce.y-view.size.height/2)]
+          var bottonsegments = [new Point(ce.x-view.size.width/2, ce.y+view.size.height/2), new Point(ce.x+view.size.width/2, ce.y+view.size.height/2)]
+          // path.fillColor = 'rgba(191, 148, 182, 0.10)';
+          // path.fillColor = {
+          //     gradient: {
+          //       stops: ['rgba(255, 75, 31, .23)', 'rgba(31, 221, 255, .31)'],
+          //     radial: true
+          //  }
+          // }
+          // stops: ['rgba(255, 75, 31, 0.23)', 'rgba(31, 221, 255, 0.31)']
+          // path.strokeColor = 'white';
+
+          var intLinesNum = 12;
+          var integrationLines = [];
+          var labelTexts = [];
+
+          initializePath();
+
+          function initializePath() {
+            center = view.center;
+            width = view.size.width;
+            height = view.size.height / 2;
+            path.segments = [];
+            path.add(view.bounds.leftCenter);
+            for (var i = 1; i < points; i++) {
+              var point = new Point(width / points * i, center.y);
+              path.add(point);
+            }
+            path.add(view.bounds.rightCenter);
+            path.fullySelected = false; // show the points on the path here 
+          }
+
+          function onFrame(event) {
+            for (var prevLines = 0; prevLines < integrationLines.length; prevLines++) {
+              integrationLines[prevLines].remove();
+            }
+            integrationLines.length = 0;
+            for (var pT = 0; pT < labelTexts.length; pT++) {
+              labelTexts[pT].remove();
+            }
+            labelTexts.length = 0;
+            if (mousePos.y > height+(height/2.5)) {
+              mousePosYCeil = height+(height/2.5);
+            } else if (mousePos.y < height-(height/2.5)) {
+              mousePosYCeil = height-(height/2.5);
+            } else {
+              mousePosYCeil = mousePos.y;
+            }
+            pathHeight += (center.y - mousePosYCeil - pathHeight) / 10;
+            for (var i = 1; i < points; i++) {
+              var sinSeed = event.count + (i + i % 10) * 2000;
+              var sinHeight = Math.sin(sinSeed / 200) * pathHeight;
+              var yPos = Math.sin(sinSeed / 100) * sinHeight + height;
+              path.segments[i].point.y = yPos;
+            }
+            for (var ni = 1; ni < intLinesNum; ni++) {
+              var xPos = (width / intLinesNum) * ni;
+              var centerpoint = new Point(xPos, height);
+              var endpoint = new Point(xPos, path.segments[ni%12].point.y);
+              var intpath = new Path.Line(centerpoint, endpoint);
+              intpath.strokeColor = new Color(0, 0, 0, 0.05);
+              intpath.strokeCap = 'butt';
+              intpath.strokeWidth = 3;
+              integrationLines.push(intpath)
+              var highlightwidth = (width / intLinesNum) / 2
+              if ((mousePos.x > (xPos - highlightwidth)) && (mousePos.x < (xPos + highlightwidth))) {
+                var labeltext = new PointText({
+                  point: endpoint,
+                  content: height-endpoint.y,
+                  fillColor: new Color(0, 0, 0, 0),
+                  fontSize: Math.log(Math.abs(height-endpoint.y))*3, 
+                  fontFamily: 'Helvetica'
+                });
+              } else {
+                var labeltext = new PointText({
+                  point: endpoint,
+                  content: height-endpoint.y,
+                  fillColor: new Color(0, 0, 0, 0),
+                  fontSize: 9, 
+                  fontFamily: 'Helvetica'
+                });
+              }
+              labelTexts.push(labeltext)
+            }
+            if (smooth)
+              path.smooth({ type: 'continuous' });
+          }
+
+          function onMouseMove(event) {
+            mousePos = event.point;
+          }
+
+          function onMouseDown(event) {
+            smooth = !smooth;
+            if (!smooth) {
+              // If smooth has been turned off, we need to reset
+              // the handles of the path:
+              for (var i = 0, l = path.segments.length; i < l; i++) {
+                var segment = path.segments[i];
+                segment.handleIn = segment.handleOut = null;
+              }
+            }
+          }
+
+          // Reposition the path whenever the window is resized:
+          function onResize(event) {
+            path.fitBounds(view.bounds);
+            initializePath();
+          }
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Karla|Rubik|Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700" rel="stylesheet">
   </head>
   <body class="bg-white min-height-full" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
