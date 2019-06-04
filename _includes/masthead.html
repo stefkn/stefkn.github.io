@@ -4,6 +4,9 @@
   {% assign metadata_styles = 'd-flex flex-items-center mb-3' %}
 {% endif %}
 
+
+
+<div style="{% if site.layout == 'stacked' %}position: fixed; height: -webkit-fill-available{% else %}position: absolute; height: -webkit-fill-available{% endif %}">
 <!-- <img src="{{ user.avatar_url }}" class="circle mb-3" style="max-width: 150px;"> -->
 <img src="/assets/me.jpg" class="rounded-2" style="max-width: 150px;">
 <!-- <h1 class="{% if site.style == 'dark' %}text-white{% endif %} mb-2 mt-2 lh-condensed"> -->
@@ -67,3 +70,4 @@
     {% endif %}
   </div>
 {% endif %}
+</div>
