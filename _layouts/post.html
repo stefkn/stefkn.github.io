@@ -1,5 +1,5 @@
 {% include header.html %}
-
+<style>#rubikfont-article {font-family: Rubik, sans-serif;} #rubikfont-title {font-weight: 500 !important; font-family: 'IBM Plex Sans'; letter-spacing: -1.2px; font-size: 44px !important;}</style>
 {% capture post_body %}
   <!-- {% if site.social_media %}
     {% assign shareable_social_media = '' | split: ',' %}
@@ -30,7 +30,7 @@
       </div>
     {% endif %}
   {% endif %} -->
-  <div class="article">
+  <div class="article" id="rubikfont-article">
     {{ content }}
   </div>
 {% endcapture %}
@@ -41,28 +41,47 @@
 
     <div class="container-md f4 text-left border rounded-2 bg-white p-3 p-sm-5 mt-6">
       <p class="f5"><a href="/" class="d-flex flex-items-center">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:#0366d6 aria-label:Home %}Home</a></p>
-      <h1 class="f00-light lh-condensed">{{ page.title }}</h1>
+      <h1 class="f00-light lh-condensed" id="rubikfont-title">{{ page.title }}</h1>
       <p class="text-white mb-5">Published {{ page.date | date: "%b %d, %Y"}}</p>
       <!-- <p class="{% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %} mb-5">Published {{ page.date | date: "%b %d, %Y"}}</p> -->
-      {{ post_body }}
+      <div id="rubikfont-article">
+        {{ post_body }}
+      </div>
     </div>
   </div>
 {% else %}
+  </div>
   <div class="d-md-flex min-height-full border-md-bottom">
-    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+    <div style="height: 52em; z-index: 1;" class="flex-self-stretch masthead-transparency-responsive bg-gray-dark  col-md-4 col-lg-3 col-xl-3 px-4 px-md-6 px-lg-7 py-6 header-anim-fade">
   <!-- <div class="d-md-flex min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
     <div class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6"> -->
       {% include masthead.html metadata=true %}
     </div>
+    <div style="width: -webkit-fill-available; height: -webkit-fill-available; position: absolute; background-repeat: no-repeat; background-image: linear-gradient(rgba(0, 0, 0, 0.19), {{page.headergradient}}), url({{page.headerimg}}); z-index: 0; background-size: cover;" class="mt-3-md img-anim-fade">
+      <!-- THIS IS THE TOP HEADER AND TITLE -->
+      <div style="margin-top: 27em; position: absolute; right: 0px; margin-left: 40%; margin-right: 10%;" class="f4 postcontent-transparency-responsive {% if site.style == 'dark' %}text-white{% endif %}">
+          <p style="text-decoration: underline; font-weight: 700;" class="f5"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}Home</a></p>
+          <h1 class="f00-light lh-condensed" id="rubikfont-title">{{ page.title }}</h1>
+          <p class="{% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %} mb-5">Published {{ page.date | date: "%b %d, %Y"}}</p>
+      </div>
 
-    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
-      <div class="mx-auto" style="max-width: 900px;">
-        <div class="f4 {% if site.style == 'dark' %}text-white{% endif %} mb-6">
+    <!-- <div style="z-index: 0;">
+      <img src={{page.header}} style="position: absolute; width: 100%;" />
+    </div> -->
+
+    <div style="margin-top: 57em; float: right; width: -webkit-fill-available;" class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
+      <div class="mx-auto" style="max-width: 628px;">
+        <div style="z-index: 3; position: relative;" class="f4 {% if site.style == 'dark' %}text-white{% endif %} mb-6">
+
+            <!-- <div style="width: 100%;height: 44em;z-index: 3;position: absolute;box-shadow: inset 8px -230px 250px -40px rgb(250, 251, 252);"></div> -->
+
           <div class="f4 {% if site.style == 'dark' %}text-white{% endif %}">
-            <p class="f5"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}Home</a></p>
-            <h1 class="f00-light lh-condensed">{{ page.title }}</h1>
-            <p class="{% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %} mb-5">Published {{ page.date | date: "%b %d, %Y"}}</p>
-            {{ post_body }}
+            <!-- <p class="f5"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}Home</a></p>
+            <h1 class="f00-light lh-condensed" id="rubikfont-title">{{ page.title }}</h1>
+            <p class="{% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %} mb-5">Published {{ page.date | date: "%b %d, %Y"}}</p> -->
+            <div id="rubikfont-article">
+                {{ post_body }}
+            </div>
           </div>
         </div>
       </div>
