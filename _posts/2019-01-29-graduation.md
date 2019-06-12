@@ -1,6 +1,6 @@
 ---
 title: "#1: Graduation"
-published: true
+published: false
 headerimg: "../../../../assets/graduation.jpg"
 headergradient: "rgba(255, 91, 91, 0.88)"
 ---
