@@ -53,6 +53,9 @@
   .iframely-embed {
     margin-bottom: 1em;
   }
+  // .header-anim-fade {
+  //   width: 700;
+  // }
 }
 
 @media (max-width: 768px) {
@@ -71,6 +74,9 @@
   }
   .masthead-padding {
     padding-bottom: 40em !important;
+  }
+  .header-anim-fade {
+    width: 100%;
   }
 }
 
