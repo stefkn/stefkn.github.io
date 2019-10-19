@@ -6,7 +6,7 @@ plugins:
   - jekyll-github-metadata
   - jemoji
 
-permalink: /:year/:month/:day/:title/
+permalink: /:year/:title/
 
 defaults:
   -
@@ -16,6 +16,10 @@ defaults:
     values:
       layout: "post"
 
+collections:
+  portfolio_projects:
+    output: true
+
 projects:
   sort_by: pushed
   # sort_by options:
@@ -23,9 +27,8 @@ projects:
   #   - stars
   limit: 9
   exclude:
-    forks: true
+    forks: false
     projects:
-    # - repo-name
 
 social_media:
   # behance: your_username
