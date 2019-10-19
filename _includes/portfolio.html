@@ -1,0 +1,33 @@
+<h2 {% if site.style == 'dark' %}class="text-white"{% endif %}>Project Portfolio</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Some past projects of mine</p>
+
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  <!-- {% if site.projects.sort_by == 'stars' %}
+    {% assign sort_order = 'stargazers_count', 'last' %}
+  {% else %}
+    {% assign sort_order = 'pushed_at' %}
+  {% endif %}
+
+  {% if site.projects.exclude.forks %}
+    {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
+  {% else %}
+    {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
+  {% endif %} -->
+
+  {% for proj in site.portfolio_projects %}
+    <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+      {% include portfolio-card.html %}
+    </div>
+  {% endfor %}
+</div>
+
+<!-- 
+<h2 {% if site.style == 'dark' %}class="text-white"{% endif %}>Project Portfolio</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Collections of strings.</p>
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  {% for post in site.posts limit: 6 %}
+    <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+      {% include post-card.html %}
+    </div>
+  {% endfor %}
+</div> -->
