@@ -10,12 +10,14 @@
 <!-- <img src="{{ user.avatar_url }}" class="circle mb-3" style="max-width: 150px;"> -->
 <img src="/assets/me.jpg" class="rounded-2" style="max-width: 150px;">
 <!-- <h1 class="{% if site.style == 'dark' %}text-white{% endif %} mb-2 mt-2 lh-condensed"> -->
-<h1 class="text-white mb-2 mt-2 lh-condensed">
-  <!-- {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %} -->
-  Stefan <br />
-  Kenichiro <br />
-  Nowak
-</h1>
+<a href="{{ site.baseurl }}" class="text-white mb-2 mt-2 lh-condensed">
+  <h1 class="text-white mb-2 mt-2 lh-condensed">
+    <!-- {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %} -->
+    Stefan <br />
+    Kenichiro <br />
+    Nowak
+  </h1>
+</a>
 <!-- <p class="mb-3 f4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}"> -->
 <p class="mb-3 f4 text-white">
   <!-- {{ user.bio }} -->
@@ -44,6 +46,10 @@
         </a>
       </div>
     {% endif %}
+    <div class="{{ metadata_styles }} text-white">
+        {% octicon checklist height:24 class:"mr-2 v-align-middle" fill:{{ white }} aria-label:CV %}
+        <a href="{{ site.baseurl }}/cv" class="text-white lh-condensed">My Résumé</a>
+    </div>
     {% if user.location %}
       <div class="{{ metadata_styles }} text-white">
       <!-- <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}"> -->
@@ -68,6 +74,7 @@
     {% if user.hireable %}
       <span title="Hire me" class="d-inline-block f5 rounded-2 text-white bg-green py-1 px-2">Available for hire</span>
     {% endif %}
+
   </div>
 {% endif %}
 </div>
