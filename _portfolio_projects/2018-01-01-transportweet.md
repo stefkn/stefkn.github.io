@@ -2,7 +2,7 @@
 layout: post
 title: "transportweet"
 published: true
-headerimg: "../../../../assets/graduation.jpg"
+headerimg: "../../../../assets/reactscreen.png"
 cardimg: "../../../../assets/reactscreen.png"
 headergradient: "rgba(255, 91, 91, 0.88)"
 description: "public transport QoS insights from social media"
