@@ -10,7 +10,7 @@
 <!-- <img src="{{ user.avatar_url }}" class="circle mb-3" style="max-width: 150px;"> -->
 <img src="/assets/me.jpg" class="rounded-2" style="max-width: 150px;">
 <!-- <h1 class="{% if site.style == 'dark' %}text-white{% endif %} mb-2 mt-2 lh-condensed"> -->
-<a href="{{ site.baseurl }}" class="text-white mb-2 mt-2 lh-condensed">
+<a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="text-white mb-2 mt-2 lh-condensed">
   <h1 class="text-white mb-2 mt-2 lh-condensed">
     <!-- {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %} -->
     Stefan <br />
