@@ -36,16 +36,22 @@
         </a>
       </div>
     {% endif %}
-    {% if user.email %}
       <div class="{{ metadata_styles }}">
         {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ white }} aria-label:email %}
         <!-- {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:email %} -->
-        <a href="mailto:{{ user.email }}" class="text-white">
+        <a href="mailto:stefan.k.nowak@gmail.com" class="text-white">
         <!-- <a href="mailto:{{ user.email }}" {% if site.style == 'dark' %}class="text-white"{% endif %}> -->
-          {{ user.email }}
+          stefan.k.nowak@gmail.com
         </a>
       </div>
-    {% endif %}
+      <div class="{{ metadata_styles }}">
+        {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ grey }} aria-label:email %}
+        <!-- {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:email %} -->
+        <a href="mailto:stefan.nowak@kcl.ac.uk" style="color: grey;">
+        <!-- <a href="mailto:{{ user.email }}" {% if site.style == 'dark' %}class="text-white"{% endif %}> -->
+          stefan.nowak@kcl.ac.uk
+        </a>
+      </div>
     <div class="{{ metadata_styles }} text-white">
         {% octicon checklist height:24 class:"mr-2 v-align-middle" fill:{{ white }} aria-label:CV %}
         <a href="{{ site.baseurl }}/cv" class="text-white lh-condensed">My Résumé</a>
