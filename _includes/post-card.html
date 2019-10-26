@@ -1,5 +1,13 @@
 <div class="hover-grow height-full text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
   <div class="d-flex flex-justify-between flex-items-start mb-1">
+    <img src="{{ post.headerimg }}" style="width: -webkit-fill-available;     border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;" />
+  </div>
+  <div class="d-flex flex-justify-between flex-items-start mb-1">
     <h1 class="f4 lh-condensed mb-1">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
