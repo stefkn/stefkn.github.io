@@ -3,10 +3,12 @@ layout: default
 ---
 <div class="animatedtoptext animatedFadeInUp fadeInUp">
 <h1>Personal Statement & CV</h1>
+                <hr />
 <br />
                 <p style="font-weight: 200; font-size: x-large;" class="mb-6 pr-6 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">
                 "In 2019, to be a truly impactful information professional, it is no longer adequate to solely be a competent technologist. The easy problems have been solved; the rest lie on multi-domain interfaces."
                 </p>
+                <hr />
                 <h3>
                 Venture capitalist Marc Andreessen asserted in his canonical 2011 WSJ op-ed that <a href="https://a16z.com/2011/08/20/why-software-is-eating-the-world/">"software is eating the world."</a> Good software is now fundamental to the success of any venture of scale, tech-centric or not. It is my conviction that—as society grows ever more dependent on its information systems—we need not merely a larger quantity of technologists, but more technically-literate, interdisciplinary, open-minded, <a href="https://onezero.medium.com/speaking-truth-to-power-reflections-on-a-career-at-microsoft-90f80a449e36">antidogmatic</a>, deliberate, curious and conscientious architects of our collective digital future. 
                 </h3>
@@ -16,7 +18,7 @@ layout: default
                 </h3>
                 <br />
                 <h4>
-                I strive for a workplace where one can learn from a diverse set of colleagues, one of open and nuanced exchange of ideas, maximum empathy, mutual support, respect, and uncompromising ethical foundation. I hope not only to be able to achieve my best work, but to help others do the same—which I strongly believe is a subset of great work.
+                I strive for a workplace where one can learn from a diverse set of colleagues, one of open and nuanced exchange of ideas, <a href="https://www.nytimes.com/2017/08/12/upshot/techs-damaging-myth-of-the-loner-genius-nerd.html">maximum empathy,</a> mutual support, respect, and uncompromising ethical foundation. I hope not only to be able to achieve my best work, but to help others do the same—which I strongly believe is a subset of great work.
                 </h3>
                 <br />
 </div>
