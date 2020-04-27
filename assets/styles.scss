@@ -69,7 +69,7 @@
   .bookcover {
     width: 40%;
     float: right;
-    margin-left: 0em !important; 
+    margin-left: 0em !important;
     margin-bottom: 0em !important;
   }
   .masthead-padding {
@@ -77,6 +77,13 @@
   }
   .header-anim-fade {
     width: 100%;
+  }
+  // Fix this later -- spaces the header so that it's ok on mobile, hides heroanim
+  #myCanvas {
+    display: none;
+  }
+  .mobile-fix {
+    height: 800px;
   }
 }
 
